@@ -5,14 +5,16 @@ internal class Program
 {
     static void Main(string[] args)
     {
+        Console.WriteLine("\n-> Program is running.................");
         double result = PromptInitialValue();
 
         while (true)
         {
             Stack<ICommand> history = new Stack<ICommand>();
+            Console.WriteLine($"\nCurrent value: {result}");
 
-            Console.WriteLine($"\nCurrent starting value: {result}");
-            Console.WriteLine("Enter a sequence of commands (comma-separated): Commands like,: increment, decrement, double, randadd, undo");
+            Console.WriteLine("\n-> Enter a sequence of commands (comma-separated) for further operations on the value: " +
+                "\n->Write Commands on console like,: increment, decrement, double, randadd, undo\n");
 
             string inputLine = Console.ReadLine()?.Trim().ToLower();
             if (string.IsNullOrEmpty(inputLine)) continue;
@@ -66,10 +68,9 @@ internal class Program
             }
 
             // Ask user what to do next
-            Console.WriteLine("\nWhat would you like to do next?");
-            Console.WriteLine("1 - Continue with last value");
-            Console.WriteLine("2 - Start over with a new value");
-            Console.WriteLine("3 - Exit");
+            Console.WriteLine("\n-> Press 1 - if you would like to continue with last value");
+            Console.WriteLine("-> Press 2 - if you would like to start over with a new value");
+            Console.WriteLine("-> Press 3 - if you would like to exit");
 
             string choice = Console.ReadLine()?.Trim();
             switch (choice)
@@ -94,7 +95,7 @@ internal class Program
         double result;
         while (true)
         {
-            Console.Write("Enter initial value: ");
+            Console.Write("\nEnter initial value: ");
             string input = Console.ReadLine()?.Trim();
 
             if (double.TryParse(input, out result))
